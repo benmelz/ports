@@ -1,0 +1,62 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+# -------------
+# | PORT INFO |
+# -------------
+
+PortSystem     1.0
+PortGroup      mlz 1.0
+
+mlz.port       openssh
+mlz.github     openssh-portable openssh V_8_4_P1
+categories     net
+
+depends_lib    port:kerberos5    \
+               port:libedit      \
+               port:openssl      \
+               port:zlib
+depends_run    port:xauth
+
+# -------------
+# | CONFIGURE |
+# -------------
+
+use_autoreconf    yes
+
+configure.args    --sysconfdir=${prefix}/etc/ssh        \
+                  --mandir=${prefix}/share/man          \
+                  --with-privsep-path=/var/empty        \
+                  --with-ssl-dir=${prefix}              \
+                  --with-audit=bsm                      \
+                  --with-kerboros5=${prefix}            \
+                  --without-ldns                        \
+                  --with-libedit                        \
+                  --with-md5-passwords                  \
+                  --with-pam                            \
+                  --with-pie                            \
+                  --with-zlib=${prefix}                 \
+                  --with-xauth=${prefix}
+
+# ------------
+# | DESTROOT |
+# ------------
+
+post-destroot {
+    # USE SYSTEM SSH-ADD AND SSH-AGENT
+
+    file delete ${destroot}${prefix}/bin/ssh-add
+    file link -symbolic ${destroot}${prefix}/bin/ssh-add /usr/bin/ssh-add
+    file delete ${destroot}${prefix}/bin/ssh-agent
+    file link -symbolic ${destroot}${prefix}/bin/ssh-agent /usr/bin/ssh-agent
+
+    # INSTALL SSH-COPY-ID
+
+    xinstall -m 755 ${worksrcpath}/contrib/ssh-copy-id ${destroot}${prefix}/bin
+    xinstall -m 644 ${worksrcpath}/contrib/ssh-copy-id.1 ${destroot}${prefix}/share/man/man1
+
+    # ADD KEYCHAIN LOAD AGENT
+
+    file mkdir -p ${destroot}/Library/LaunchAgents
+    xinstall -m 644 -o root -g wheel ${filespath}/com.openssh.keyload.plist ${destroot}/Library/LaunchAgents
+}
+

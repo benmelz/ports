@@ -1,0 +1,30 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+# -------------
+# | PORT INFO |
+# -------------
+
+PortSystem     1.0
+PortGroup      mlz 1.0
+
+mlz.port       nodejs
+mlz.github     node nodejs v14.15.0
+categories     devel
+
+depends_lib    port:icu                   \
+               port:openssl               \
+
+# -------------
+# | CONFIGURE |
+# -------------
+
+configure.args    --without-npm                                          \
+                  --with-intl=system-icu                                 \
+                  --shared-openssl                                       \
+                  --shared-openssl-includes=${prefix}/include/openssl    \
+                  --shared-openssl-libpath=${prefix}/lib
+
+# ---------
+# | BUILD |
+# ---------
+

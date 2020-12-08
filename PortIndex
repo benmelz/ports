@@ -1,0 +1,18 @@
+git 508
+variants universal depends_build {port:autoconf port:automake port:libtool} portdir devel/git description git depends_run {port:p5.28-authen-sasl port:p5.28-cgi port:p5.28-error port:p5.28-net-smtp-ssl port:p5.28-term-readkey port:rsync} epoch 0 platforms darwin name git depends_lib {port:asciidoc port:curl port:expat port:gettext port:libiconv port:openssh port:openssl port:pcre2 port:perl5.28 port:python38 port:xmlto port:zlib} license unknown maintainers benmelz categories devel version 0 revision 0
+nodejs 206
+variants universal portdir devel/nodejs description nodejs epoch 0 platforms darwin name nodejs depends_lib {port:icu port:openssl} license unknown maintainers benmelz version 0 categories devel revision 0
+vim 219
+variants universal portdir editors/vim description vim epoch 0 platforms darwin name vim depends_lib {port:libiconv port:gettext port:ncurses} license unknown maintainers benmelz version 0 categories editors revision 0
+openssh 314
+variants universal depends_build {port:autoconf port:automake port:libtool} portdir net/openssh description openssh depends_run port:xauth epoch 0 platforms darwin name openssh depends_lib {port:kerberos5 port:libedit port:openssl port:zlib} license unknown maintainers benmelz categories net version 0 revision 0
+rbenv 180
+platforms darwin description rbenv portdir pkgmgrs/rbenv name rbenv categories pkgmgrs version 0 revision 0 maintainers benmelz license unknown epoch 0 depends_run port:ruby-build
+vundle 155
+platforms darwin description vundle portdir pkgmgrs/vundle name vundle categories pkgmgrs version 0 revision 0 maintainers benmelz license unknown epoch 0
+yarn 173
+platforms darwin description yarn portdir pkgmgrs/yarn name yarn categories pkgmgrs version 0 revision 0 maintainers benmelz license unknown epoch 0 depends_run port:nodejs
+zinit 152
+platforms darwin description zinit portdir pkgmgrs/zinit name zinit categories pkgmgrs version 0 revision 0 maintainers benmelz license unknown epoch 0
+zsh 291
+variants universal depends_build {port:autoconf port:automake port:libtool} portdir shells/zsh description zsh epoch 0 platforms darwin name zsh depends_lib {port:gdbm port:libiconv port:ncurses port:pcre port:yodl} license unknown maintainers benmelz version 0 categories shells revision 0

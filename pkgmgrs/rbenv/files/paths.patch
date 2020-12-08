@@ -1,0 +1,13 @@
+diff --git a/libexec/rbenv-init b/libexec/rbenv-init
+index cd327fa..61e7ebf 100755
+--- a/libexec/rbenv-init
++++ b/libexec/rbenv-init
+@@ -93,7 +93,7 @@ fish )
+   echo 'export PATH="'${RBENV_ROOT}'/shims:${PATH}"'
+   echo "export RBENV_SHELL=$shell"
+ 
+-  completion="${root}/completions/rbenv.${shell}"
++  completion="${root}/rbenv-completions.${shell}"
+   if [ -r "$completion" ]; then
+     echo "source '$completion'"
+   fi

@@ -1,0 +1,37 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+# -------------
+# | PORT INFO |
+# -------------
+
+PortSystem     1.0
+PortGroup      mlz 1.0
+
+mlz.port       zsh
+mlz.github     zsh zsh-users zsh-5.8
+categories     shells
+
+depends_lib    port:gdbm \
+               port:libiconv \
+               port:ncurses \
+               port:pcre \
+               port:yodl
+
+# -------------
+# | CONFIGURE |
+# -------------
+
+use_autoreconf             yes
+
+configure.cflags-append    -Wno-implicit-function-declaration
+
+configure.args             --enable-cap                                \
+                           --enable-pcre                               \
+                           --with-tcsetpgrp                            \
+                           --enable-etcdir=${prefix}/etc               \
+                           --enable-zshenv=${prefix}/etc/zshenv        \
+                           --enable-zshrc=${prefix}/etc/zshrc          \
+                           --enable-zlogin=${prefix}/etc/zlogin        \
+                           --enable-zprofile=${prefix}/etc/zprofile    \
+                           --enable-zlogout=${prefix}/etc/zlogout
+
