@@ -2,8 +2,9 @@ git 0
 nodejs 516
 vim 733
 openssh 960
-rbenv 1286
-vundle 1448
-yarn 1614
-zinit 1796
-zsh 1958
+pyenv 1286
+rbenv 1448
+vundle 1610
+yarn 1776
+zinit 1958
+zsh 2120

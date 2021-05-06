@@ -6,6 +6,8 @@ vim 219
 variants universal portdir editors/vim description vim epoch 0 platforms darwin name vim depends_lib {port:libiconv port:gettext port:ncurses} license unknown maintainers benmelz version 0 categories editors revision 0
 openssh 314
 variants universal depends_build {port:autoconf port:automake port:libtool} portdir net/openssh description openssh depends_run port:xauth epoch 0 platforms darwin name openssh depends_lib {port:kerberos5 port:libedit port:openssl port:zlib} license unknown maintainers benmelz categories net version 0 revision 0
+pyenv 152
+platforms darwin description pyenv portdir pkgmgrs/pyenv name pyenv categories pkgmgrs version 0 revision 0 maintainers benmelz license unknown epoch 0
 rbenv 152
 platforms darwin description rbenv portdir pkgmgrs/rbenv name rbenv categories pkgmgrs version 0 revision 0 maintainers benmelz license unknown epoch 0
 vundle 155

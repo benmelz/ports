@@ -1,0 +1,13 @@
+diff --git a/libexec/pyenv-init b/libexec/pyenv-init
+index 2bf7c56a..56c1b39c 100755
+--- a/libexec/pyenv-init
++++ b/libexec/pyenv-init
+@@ -95,7 +95,7 @@ fish )
+ ;;
+ esac
+ 
+-completion="${root}/completions/pyenv.${shell}"
++completion="${root}/pyenv-completions.${shell}"
+ if [ -r "$completion" ]; then
+   echo "source '$completion'"
+ fi
